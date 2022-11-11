@@ -6,6 +6,8 @@ function Enemy:new()
     self.row = 3
     self.col = 6
     self.size = 40
+    self.w = self.size
+    self.h = self.size
     self.gap = 50
     self.dir = 'left'
     self.vel = 100
@@ -14,7 +16,7 @@ function Enemy:new()
         for c = 2, self.col do 
             x = c * self.size + self.gap * c
             y = r * self.size + self.gap * r / 2
-            table.insert(self.list, {x=x, y=y})
+            table.insert(self.list, {x=x, y=y, w=self.w, h=self.h})
         end
     end
     return self
