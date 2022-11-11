@@ -19,6 +19,7 @@ function Enemy:new()
             table.insert(self.list, {x=x, y=y, w=self.w, h=self.h})
         end
     end
+    self.middle = self.list[3]
     return self
 end
 
@@ -26,10 +27,12 @@ function Enemy:move(dt)
     if self.dir == 'left' then 
         for i, k in pairs(self.list) do 
             self.list[i].x = self.list[i].x - self.vel * dt
+            --self.middle.x = self.middle.x - self.vel * dt 
         end
     elseif self.dir == 'right' then 
         for i, k in pairs(self.list) do 
             self.list[i].x = self.list[i].x + self.vel * dt
+            --self.middle.x = self.middle.x + self.vel * dt 
         end   
     end
     if self.list[3].x < 0 then 
@@ -42,6 +45,7 @@ function Enemy:move(dt)
 end
 
 function Enemy:moveDown()
+    self.middle.y = self.middle.y + 10
     for i, k in pairs(self.list) do 
         self.list[i].y = self.list[i].y + 10
     end

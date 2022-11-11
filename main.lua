@@ -37,7 +37,6 @@ function enemyHit(player, enemy)
     for i, b in pairs(player.bullets) do 
         for j, e in pairs(enemy.list) do 
             if collide(b, e) then 
-                print('herereer')
                 player.bullets[i] = nil
                 enemy.list[j] = nil
             end
