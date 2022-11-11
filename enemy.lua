@@ -7,6 +7,8 @@ function Enemy:new()
     self.col = 6
     self.size = 40
     self.gap = 50
+    self.dir = 'left'
+    self.vel = 100
     self.list = {}
     for r = 1, self.row do 
         for c = 2, self.col do 
@@ -16,6 +18,31 @@ function Enemy:new()
         end
     end
     return self
+end
+
+function Enemy:move(dt)
+    if self.dir == 'left' then 
+        for i, k in pairs(self.list) do 
+            self.list[i].x = self.list[i].x - self.vel * dt
+        end
+    elseif self.dir == 'right' then 
+        for i, k in pairs(self.list) do 
+            self.list[i].x = self.list[i].x + self.vel * dt
+        end   
+    end
+    if self.list[3].x < 0 then 
+        self.dir = 'right' 
+        self:moveDown()
+    elseif self.list[3].x > love.graphics.getWidth() then 
+        self.dir = 'left'
+        self:moveDown()
+    end 
+end
+
+function Enemy:moveDown()
+    for i, k in pairs(self.list) do 
+        self.list[i].y = self.list[i].y + 10
+    end
 end
 
 function Enemy:draw()

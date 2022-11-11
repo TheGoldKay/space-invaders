@@ -22,4 +22,5 @@ end
 
 function love.update(dt)
     player:move(dt)
+    enemy:move(dt)
 end 
