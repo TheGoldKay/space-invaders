@@ -1,8 +1,10 @@
 Player = require('player')
+Enemy = require('enemy')
 
 function love.load()
     love.graphics.setBackgroundColor(0.2, 0, 0.5)
     player = Player:new()
+    enemy = Enemy:new()
 end
 
 function love.keypressed(key)
@@ -15,6 +17,7 @@ end
 
 function love.draw()
     player:draw()
+    enemy:draw()
 end
 
 function love.update(dt)
